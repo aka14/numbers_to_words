@@ -36,7 +36,7 @@ class NumberWord
     end
   end
 
-  def digit_4(num)
+  def digit_4_5_6(num)
     quotient = num / 1000
     remainder = num % 1000
     first_word = digit_1(quotient) + ' ' + 'thousand'
