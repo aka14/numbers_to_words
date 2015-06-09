@@ -119,4 +119,55 @@ describe NumberWord do
     end
   end
 
+  describe '#validates_input' do
+    it 'should return true' do
+      expect(@number_word.validates_input(1000000)).to eq(true)
+    end
+
+    it 'should return false' do
+      expect(@number_word.validates_input(1000000000)).to eq(false)
+    end
+  end
+
+
+  describe '#convert' do
+    it 'should return zero' do
+      expect(@number_word.convert(0)).to eq('zero')
+    end
+
+    it 'should return sixteen' do
+      expect(@number_word.convert(16)).to eq('sixteen')
+    end
+
+    it 'should return four hundred forty' do
+      expect(@number_word.convert(440)).to eq('four hundred forty')
+    end
+
+    it 'should return seven thousand six hundred' do
+      expect(@number_word.convert(7600)).to eq('seven thousand six hundred')
+    end
+    it 'should return eighty thousand' do
+      expect(@number_word.convert(80000)).to eq('eighty thousand')
+    end
+
+    it 'should return three hundred thousand two hundred eleven' do
+      expect(@number_word.convert(300211)).to eq('three hundred thousand two hundred eleven')
+    end
+    it 'should return one million four' do
+      expect(@number_word.convert(1000004)).to eq('one million four')
+    end
+
+    it 'should return fifty million eight hundred thousand one hundred' do
+      expect(@number_word.convert(50800100)).to eq('fifty million eight hundred thousand one hundred')
+    end
+
+    it 'should return ninety million four hundred seven' do
+      expect(@number_word.convert(90000407)).to eq('ninety million four hundred seven')
+    end
+
+    it 'should return false' do
+      expect(@number_word.convert(1234567890)).to eq(false)
+    end
+  end
+
 end

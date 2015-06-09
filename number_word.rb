@@ -1,9 +1,8 @@
 class NumberWord
 
-  NUMBER_WORD = { 1 => 'one', 2 => 'two', 3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six', 7 => 'seven', 8 => 'eight', 9 => 'nine',
-                  10 => 'ten', 11 => 'eleven', 12 => 'tweleve', 13 => 'thirteen', 14 => 'fourteen', 15 => 'fifteen', 16 => 'sixteen',
-                  17 => 'seventeen', 18 => 'eighteen', 19 => 'nineteen', 20 => 'twenty', 30 => 'thirty', 40 => 'forty', 50 => 'fifty',
-                  60 => 'sixty', 70 => 'seventy', 80 => 'eighty', 90 => 'ninety'}
+  NUMBER_WORD = { 0 => 'zero', 1 => 'one', 2 => 'two', 3 => 'three', 4 => 'four', 5 => 'five', 6 => 'six', 7 => 'seven', 8 => 'eight',
+                  9 => 'nine', 10 => 'ten', 11 => 'eleven', 12 => 'tweleve', 13 => 'thirteen', 14 => 'fourteen', 15 => 'fifteen',
+                  16 => 'sixteen', 17 => 'seventeen', 18 => 'eighteen', 19 => 'nineteen', 20 => 'twenty', 30 => 'thirty', 40 => 'forty',                       50 => 'fifty', 60 => 'sixty', 70 => 'seventy', 80 => 'eighty', 90 => 'ninety'}
 
   def digits_count(num)
     num.to_s.size
@@ -77,6 +76,31 @@ class NumberWord
       return word_prefix + ' ' + 'million'
     else
       return word_prefix + ' ' + 'million' + ' ' + word_suffix
+    end
+  end
+
+  def validates_input(number)
+    if(number.instance_of?(Fixnum) && number >= 0 && number < 999999999)
+      return true
+    else
+      puts "Invalid Input: Enter a number between 1 and 999999999"
+      return false
+    end
+  end
+
+  def convert(number)
+    return false unless validates_input(number)
+    digits_count = digits_count(number)
+    if digits_count == 1
+      digit_1(number)
+    elsif digits_count == 2
+      digit_2(number)
+    elsif digits_count == 3
+      digit_3(number)
+    elsif(digits_count > 3 && digits_count < 7)
+      digit_4_5_6(number)
+    elsif(digits_count > 6 && digits_count < 10)
+      digit_7_8_9(number)
     end
   end
 
