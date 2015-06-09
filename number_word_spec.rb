@@ -7,6 +7,16 @@ describe NumberWord do
     @number_word = NumberWord.new
   }
 
+  describe '#digits_count' do
+    it 'should return 1' do
+      expect(@number_word.digits_count(9)).to eq(1)
+    end
+
+    it 'should return 4' do
+      expect(@number_word.digits_count(1234)).to eq(4)
+    end
+  end
+
   describe '#digit_1' do
     it 'should return one' do
       expect(@number_word.digit_1(1)).to eq('one')

@@ -5,6 +5,10 @@ class NumberWord
                   17 => 'seventeen', 18 => 'eighteen', 19 => 'nineteen', 20 => 'twenty', 30 => 'thirty', 40 => 'forty', 50 => 'fifty',
                   60 => 'sixty', 70 => 'seventy', 80 => 'eighty', 90 => 'ninety'}
 
+  def digits_count(num)
+    num.to_s.size
+  end
+
   def digit_1(num)
     return NUMBER_WORD[num]
   end
@@ -22,7 +26,14 @@ class NumberWord
   def digit_3(num)
     quotient = num / 100
     remainder = num % 100
-    return digit_1(quotient) + ' ' + 'hundred' + ' ' + digit_2(remainder)
+    first_word = digit_1(quotient) + ' ' + 'hundred'
+    if remainder == 0
+      first_word
+    else
+      digits_count_remainder = digits_count(remainder)
+      last_word = digits_count_remainder == 1 ? digit_1(remainder) : digit_2(remainder)
+      return first_word + ' ' + last_word
+    end
   end
 
 end
