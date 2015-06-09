@@ -36,4 +36,23 @@ class NumberWord
     end
   end
 
+  def digit_4(num)
+    quotient = num / 1000
+    remainder = num % 1000
+    first_word = digit_1(quotient) + ' ' + 'thousand'
+    digits_count_remainder = digits_count(remainder)
+    if digits_count_remainder == 1
+      last_word = digit_1(remainder)
+    elsif digits_count_remainder == 2
+      last_word = digit_2(remainder)
+    elsif digits_count_remainder == 3
+      last_word = digit_3(remainder)
+    end
+    if remainder == 0
+       first_word
+    else
+      return first_word + ' ' + last_word
+    end
+  end
+
 end

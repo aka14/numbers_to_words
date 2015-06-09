@@ -59,4 +59,25 @@ describe NumberWord do
     end
   end
 
+  describe '#digit_4' do
+    it 'should return one thousand' do
+      expect(@number_word.digit_4(1000)).to eq('one thousand')
+    end
+
+    it 'should return one thousand nine' do
+      expect(@number_word.digit_4(1009)).to eq('one thousand nine')
+    end
+
+    it 'should return two thousand one hundred' do
+      expect(@number_word.digit_4(2100)).to eq('two thousand one hundred')
+    end
+
+    it 'should return three thousand eighteen' do
+      expect(@number_word.digit_4(3018)).to eq('three thousand eighteen')
+    end
+    it 'should return nine thousand nine hundred ninety nine' do
+      expect(@number_word.digit_4(9999)).to eq('nine thousand nine hundred ninety nine')
+    end
+  end
+
 end
