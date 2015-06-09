@@ -62,4 +62,22 @@ class NumberWord
     end
   end
 
+  def digit_7_8_9(num)
+    quotient = num / 1000000
+    remainder = num % 1000000
+    digits_count_quotient = digits_count(quotient)
+    digits_count_remainder = digits_count(remainder)
+    if digits_count_remainder < 4
+      word_suffix = send("digit_#{digits_count_remainder}", remainder)
+    else
+      word_suffix = digit_4_5_6(remainder)
+    end
+    word_prefix = send("digit_#{digits_count_quotient}", quotient)
+    if remainder == 0
+      return word_prefix + ' ' + 'million'
+    else
+      return word_prefix + ' ' + 'million' + ' ' + word_suffix
+    end
+  end
+
 end

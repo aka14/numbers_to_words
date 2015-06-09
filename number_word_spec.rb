@@ -101,4 +101,22 @@ describe NumberWord do
     end
   end
 
+  describe '#digit_7_8_9' do
+    it 'should return one million' do
+      expect(@number_word.digit_7_8_9(1000000)).to eq('one million')
+    end
+
+    it 'should return one million seven' do
+      expect(@number_word.digit_7_8_9(1000007)).to eq('one million seven')
+    end
+
+    it 'should return fifty four million four thousand' do
+      expect(@number_word.digit_7_8_9(54004000)).to eq('fifty four million four thousand')
+    end
+
+    it 'should return eight hundred sixty four million three hundred forty three thousand two hundred eighteen' do
+      expect(@number_word.digit_7_8_9(864343218)).to eq('eight hundred sixty four million three hundred forty three thousand two hundred eighteen')
+    end
+  end
+
 end
