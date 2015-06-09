@@ -9,4 +9,14 @@ class NumberWord
     return NUMBER_WORD[num]
   end
 
+  def digit_2(num)
+    quotient = num / 10
+    remainder = num % 10
+    if quotient == 1 || remainder == 0
+      return NUMBER_WORD[num]
+    else
+      return NUMBER_WORD[quotient * 10] +  ' ' + NUMBER_WORD[remainder]
+    end
+  end
+
 end
