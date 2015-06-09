@@ -39,19 +39,26 @@ class NumberWord
   def digit_4_5_6(num)
     quotient = num / 1000
     remainder = num % 1000
-    first_word = digit_1(quotient) + ' ' + 'thousand'
     digits_count_remainder = digits_count(remainder)
+    digits_count_quotient = digits_count(quotient)
+    if digits_count_quotient == 1
+      word_prefix = digit_1(quotient)
+    elsif digits_count_quotient == 2
+      word_prefix = digit_2(quotient)
+    elsif digits_count_quotient == 3
+      word_prefix = digit_3(quotient)
+    end
     if digits_count_remainder == 1
-      last_word = digit_1(remainder)
+      word_suffix = digit_1(remainder)
     elsif digits_count_remainder == 2
-      last_word = digit_2(remainder)
+      word_suffix = digit_2(remainder)
     elsif digits_count_remainder == 3
-      last_word = digit_3(remainder)
+      word_suffix = digit_3(remainder)
     end
     if remainder == 0
-       first_word
+      return word_prefix + ' ' + 'thousand'
     else
-      return first_word + ' ' + last_word
+      return word_prefix + ' ' + 'thousand' + ' ' + word_suffix
     end
   end
 
