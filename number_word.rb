@@ -19,4 +19,10 @@ class NumberWord
     end
   end
 
+  def digit_3(num)
+    quotient = num / 100
+    remainder = num % 100
+    return digit_1(quotient) + ' ' + 'hundred' + ' ' + digit_2(remainder)
+  end
+
 end
